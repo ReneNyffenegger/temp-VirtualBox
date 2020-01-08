@@ -1,0 +1,4 @@
+SDK / API
+
+  Any program using the Main API will first need access to the global VirtualBox object (see
+  IVirtualBox), from which all other functionality of the API is derived. 
