@@ -1,3 +1,13 @@
+Unattended Guest OS Install
+
+   https://www.virtualbox.org/manual/ch03.html
+
+   https://blogs.oracle.com/scoter/oracle-vm-virtualbox-52:-unattended-guest-os-install
+
+   Windows Technical Preview
+     https://insider.windows.com/en-us/welcome-insider/
+
+
 SDK / API
 
   Any program using the Main API will first need access to the global VirtualBox object (see
