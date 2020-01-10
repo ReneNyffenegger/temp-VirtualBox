@@ -67,11 +67,22 @@ VBoxManage modifyvm $vmName --boot1 dvd --boot2 disk --boot3 none --boot4 none
 #
 VBoxManage modifyvm $vmName --memory 8192 --vram 128
 
+
+#
+#  ???
+#
+VBoxManage sharedfolder add $vmName --name shr --hostpath "$(get-location)\sharedFolder"
+
 VBoxManage unattended install $vmName                               `
   --iso=..\ISOs\Windows10_InsiderPreview_Client_x64_en-us_19035.iso `
-  --user=login --full-user-name=rene --password theSecret           `
+  --user=tq84 --full-user-name='Tee Queue Eighty-Four' --password theSecret           `
   --install-additions                                               `
   --time-zone=CET
+
+  #
+  #  find Tee Queue Eighty-Four under
+  #    HKLM\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI -> LastLoggedOnDisplayName 
+  
 
 # VBoxManage startvm $vmName --type headless
   VBoxManage startvm $vmName

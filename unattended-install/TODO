@@ -1,0 +1,7 @@
+VBoxManage controlvm Win10Preview pause
+
+VBoxManage modifyvm --recording on|off
+VBoxManage modifyvm --recordingfile
+   etc.
+
+VBoxManage snapshot
