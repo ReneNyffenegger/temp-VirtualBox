@@ -2,9 +2,13 @@
 
 $vmName='Win10Preview'
 $vmPath="$home\VirtualBox VMs\$vmName"
+$userName='tq84'
+$password='theSecret'
+$isoFile=..\ISOs\Windows10_InsiderPreview_Client_x64_en-us_19035.iso
 
-VBoxManage unregistervm --delete $vmName
 
+
+VBoxManage.exe unattended detect --iso=$isoFile
 # VBoxManage list ostypes 
 VBoxManage createvm --name $vmName --ostype Windows10_64 --register
   #
@@ -41,48 +45,58 @@ if (! (test-path $vmPath\hard-drive.vdi)) {
 #
 #   Create a SATA storage controller and attach the virtual hard disk.
 #
-VBoxManage storagectl    $vmName --name       "SATA Controller" --add sata --controller IntelAHCI
-VBoxManage storageattach $vmName --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium $vmPath/hard-drive.vdi
+   VBoxManage storagectl    $vmName --name       "SATA Controller" --add sata --controller IntelAHCI
+   VBoxManage storageattach $vmName --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium $vmPath/hard-drive.vdi
 
 #
 #   Create an IDE storage controller for a virtual DVD drive and
 #   attach an Installation ISO medium
 #
-VBoxManage storagectl    $vmName --name       "IDE Controller"  --add ide
-VBoxManage storageattach $vmName --storagectl "IDE Controller"  --port 0 --device 0 --type dvddrive --medium ..\ISOs\Windows10_InsiderPreview_Client_x64_en-us_19035.iso
-
+   VBoxManage storagectl    $vmName --name       "IDE Controller"  --add ide
+   VBoxManage storageattach $vmName --storagectl "IDE Controller"  --port 0 --device 0 --type dvddrive --medium ..\ISOs\Windows10_InsiderPreview_Client_x64_en-us_19035.iso
 
 #
 #  Enable I/O APIC for the motherboard of the VM.
 #
-VBoxManage modifyvm $vmName --ioapic on
+   VBoxManage modifyvm $vmName --ioapic on
 
 #
 #  Configure the boot device order for the VM.
+#  A virtual machine has 4 slots from which it tries
+#  to boot from.
 #
-VBoxManage modifyvm $vmName --boot1 dvd --boot2 disk --boot3 none --boot4 none
+   VBoxManage modifyvm $vmName --boot1 dvd --boot2 disk --boot3 none --boot4 none
 
 #
 #  Allocate memory for RAM and video-RAM
 #
-VBoxManage modifyvm $vmName --memory 8192 --vram 128
-
+   VBoxManage modifyvm $vmName --memory 8192 --vram 128
 
 #
-#  ???
+#  Add a shared folder that can be accessed in the guest:
 #
-VBoxManage sharedfolder add $vmName --name shr --hostpath "$(get-location)\sharedFolder"
+# VBoxManage sharedfolder add $vmName --name shr --hostpath "$(get-location)\sharedFolder"
+  VBoxManage sharedfolder add $vmName --name shr --hostpath "$(get-location)\sharedFolder" --automount
 
-VBoxManage unattended install $vmName                               `
-  --iso=..\ISOs\Windows10_InsiderPreview_Client_x64_en-us_19035.iso `
-  --user=tq84 --full-user-name='Tee Queue Eighty-Four' --password theSecret           `
-  --install-additions                                               `
-  --time-zone=CET
+  VBoxManage unattended install $vmName                               `
+    --iso=..\ISOs\Windows10_InsiderPreview_Client_x64_en-us_19035.iso `
+    --user=tq84 --full-user-name='tee queue eighty-four' --password $password
+    --install-additions                                               `
+    --time-zone=CET
 
   #
   #  find Tee Queue Eighty-Four under
   #    HKLM\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI -> LastLoggedOnDisplayName 
+
+  VBoxManage list vms
+
+  VBoxManage showvminfo
   
+
+#
+# Remove all Menues from the Virtual Machine:
+#
+  VBoxManage setextradata $vmName GUI/RestrictedRuntimeMenus ALL 
 
 # VBoxManage startvm $vmName --type headless
   VBoxManage startvm $vmName

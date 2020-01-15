@@ -1,3 +1,33 @@
+Chapter 10.3
+
+--clipboard-mode
+
+snapshots
+
+Formats:
+  - OVF
+  - VMDK
+
+Host Key customizations
+
+  VBoxManage setextradata global|vm machine???? GUI/Input/MachineShortcuts "FullscreenMode=F…"
+
+  Setting an action to None will disable that Host key action
+
+Configuring Automatic Mouse Capturing
+
+  VBoxManage setextradata global|vm machine??? GUI/MouseCapturePolicy Default|HostComboOnly|Disabledj
+
+Keyboard scan code, P 162
+
+Chatper 8.10.2 / Import from Oracle Cloud Infrastructure
+
+VRDE - VirtualBox Remote Desktop Extensions
+
+Teleporting
+
+
+
 Unattended Guest OS Install
 
    https://www.virtualbox.org/manual/ch03.html

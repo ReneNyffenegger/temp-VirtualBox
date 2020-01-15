@@ -1,7 +1,60 @@
-VBoxManage controlvm Win10Preview pause
+BoxManage controlvm Win10Preview pause|resume|reset|poweroff|savestate
+VBoxManage controlvm Win10Preview       resume
+
+VBoxManage guestproperty enumerate Win10Preview
+VBoxManage guestproperty get       Win10Preview /VirtualBox/GuestInfo/OS/Release
+VBoxManage guestproperty get       Win10Preview /VirtualBox/GuestInfo/OS/LoggedInUsersList
+
+# P. 187
+VBoxManage guestcontrol Win10Preview run   --exe "X:\aBatchFile.bat"                 --username login --password theSecret
+VBoxManage guestcontrol Win10Preview start --exe "X:\aBatchFile.bat"                 --username login --password theSecret
+
+
+VBoxManage guestcontrol Win10Preview run   --exe  X:\aBatchFile.bat  -E VAR=value    --username login --password theSecret
+VBoxManage guestcontrol Win10Preview start --exe  C:\Windows\System32\cmd.exe        --username login --password theSecret -- /c start x:\aBatchFile.bat
+
+VBoxManage guestcontrol Win10Preview mkdir    --username login --password theSecret 'c:\users\login\Software-to-be-installed'
+
+VBoxManage guestcontrol Win10Preview copyfrom --username login --password theSecret --target-directory "$(get-location)\copiedFromGuest.log" x:\aBatchFile.log
+
+#
+#  Transfer a file from the host to the guest
+#
+VBoxManage guestcontrol Win10Preview copyto   --username login --password theSecret --target-directory C:\users\login\Software-to-be-installed "$(get-location)\anotherBatchFile.bat"
+VBoxManage guestcontrol Win10Preview run   --exe  c:\users\login\software-to-be-installed\anotherBatchFile.bat --username login --password theSecret
+
+#
+#  Transfer a file from the guest to the host
+#
+VBoxManage guestcontrol Win10Preview copyfrom --username login --password theSecret --target-directory "$(get-location)\copied.log" c:\users\login\anotherBatchFile.log
+
+VBoxManage guestcontrol Win10Preview run   --exe  C:\Windows\System32\cmd.exe        --username login --password theSecret -- /c start     cmd.exe /c dir
+VBoxManage guestcontrol Win10Preview run   --exe  C:\Windows\System32\cmd.exe        --username login --password theSecret -- /c start ""  cmd.exe /c dir x:
+
+VBoxManage guestcontrol Win10Preview run   --exe  C:\Windows\System32\cmd.exe        --username login --password theSecret -- /c start "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -command ls"
+
+VBoxManage guestcontrol Win10Preview run   --exe  C:\Windows\System32\cmd.exe        --username login --password theSecret -- /c start
+
+VBoxManage guestcontrol Win10Preview run   --exe  C:\Windows\System32\cmd.exe        --username login --password theSecret -- /c start "" dir x:\
+
+VBoxManage guestcontrol Win10Preview start --exe  C:\Windows\System32\calc.exe       --username login --password theSecret
+
+VBoxManage guestcontrol Win10Preview run   --exe "C:\Windows\System32\ipconfig.exe"  --username login --password theSecret
+VBoxManage guestcontrol Win10Preview run   --exe "C:\Windows\System32\cmd.exe"       --username login --password theSecret -- /c dir
+VBoxManage guestcontrol Win10Preview start --exe "C:\Windows\System32\cmd.exe"       --username login --password theSecret -- /k dir
+VBoxManage guestcontrol Win10Preview start --exe "C:\Windows\System32\cmd.exe"       --username login --password theSecret -- /c 'echo foo > x:\foo.txt'
+VBoxManage guestcontrol Win10Preview start --exe "C:\Windows\System32\cmd.exe"       --username login --password theSecret -- /c x:\aBatchFile.bat
+
+VBoxManage guestcontrol Win10Preview run --exe "C:\Windows\System32\cmd.exe"  --username login --password theSecret --    dir       x:
+VBoxManage guestcontrol Win10Preview run --exe "C:\Windows\System32\cmd.exe"  --username login --password theSecret --    dir /s /b x:
+VBoxManage guestcontrol Win10Preview run --exe  C:\Windows\System32\cmd.exe   --username login --password theSecret -- /k start cmd.exe /k dir
+
+
 
 VBoxManage modifyvm --recording on|off
 VBoxManage modifyvm --recordingfile
    etc.
 
-VBoxManage snapshot
+
+VBoxManage.exe controlvm $vmName keyboardputstring "echo hello world`n"
+VBoxManage.exe controlvm $vmName keyboardputscancode 44 # don't do that
