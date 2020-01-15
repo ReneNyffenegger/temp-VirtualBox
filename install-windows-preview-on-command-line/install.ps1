@@ -7,6 +7,11 @@ VBoxManage unattended install $vmName      `
   --time-zone=CET                          `
   --post-install-command='VBoxControl guestproperty set installation_finished y'
 
+#
+#  The indicated post install command is executed right after A:\VBOXPOST.CMD has executed
+#    E:\vboxadditions\VBoxWindowsAdditions.exe /S
+#
+
 
 # | out-null
 

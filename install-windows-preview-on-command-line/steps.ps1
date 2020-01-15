@@ -1,12 +1,15 @@
 #
 #  TODO
 #    c:\Program Files\Oracle\VirtualBox\UnattendedTemplates\win_postinstall.cmd
+#
+#  TODO
+#    E:\vboxadditions\VboxWindowsAdditions.exe
+#      installs to -> C:\Program Files\Oracle\VirtualBox Guest Additions\
 
-   . .\variables.ps1
+#q . .\variables.ps1
 
-VBoxManage unregistervm --delete $vmName
-rmdir -recurse $vmPath
-   
+
+   . .\remove-vm.ps1
 
    . .\detect.ps1
   
