@@ -1,32 +1,40 @@
-#q . .\variables.ps1
+#
+#  TODO
+#    c:\Program Files\Oracle\VirtualBox\UnattendedTemplates\win_postinstall.cmd
 
-#q . .\detect.ps1
-#q
-#q . .\createvm.ps1
-#q
-#q . .\create-hd.ps1
-#q
-#q . .\create-sata.ps1
-#q
-#q . .\create-ide.ps1
-#q
-#q . .\enable-apic.ps1
-#q
-#q . .\boot-device-order.ps1
-#q
-#q . .\allocate-memory.ps1
-#q
-#q . .\prepare-shared-folder.ps1
-#q
-#q . .\install.ps1
-#q
-#q . .\list-vms.ps1
-#q
-#q . .\remove-menues.ps1
-#q
-#q . .\start-vm.ps1
-#q
-#q . .\wait-for-finished-installation.ps1
+   . .\variables.ps1
+
+VBoxManage unregistervm --delete $vmName
+rmdir -recurse $vmPath
+   
+
+   . .\detect.ps1
+  
+   . .\createvm.ps1
+  
+   . .\create-hd.ps1
+  
+   . .\create-sata.ps1
+  
+   . .\create-ide.ps1
+  
+   . .\enable-apic.ps1
+  
+   . .\boot-device-order.ps1
+  
+   . .\allocate-memory.ps1
+  
+   . .\prepare-shared-folder.ps1
+  
+   . .\install.ps1
+  
+   . .\list-vms.ps1
+  
+   . .\remove-menues.ps1
+  
+   . .\start-vm.ps1
+  
+   . .\wait-for-finished-installation.ps1
 #q
 #q . .\take-snapshot.ps1
 #q
