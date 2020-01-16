@@ -1,4 +1,4 @@
-echo  Wait until installation is finished
+echo "Wait until installation is finished"
 
 VBoxManage guestproperty wait $vmName installation_finished
 

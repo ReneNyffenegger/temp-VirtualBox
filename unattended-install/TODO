@@ -1,5 +1,6 @@
-BoxManage controlvm Win10Preview pause|resume|reset|poweroff|savestate
-VBoxManage controlvm Win10Preview       resume
+VBoxManage controlvm $vmName pause|resume|reset|poweroff|savestate
+VBoxManage controlvm $vmName       resume
+VBoxManage controlvm $vmName                             savestate
 
 VBoxManage guestproperty enumerate Win10Preview
 VBoxManage guestproperty get       Win10Preview /VirtualBox/GuestInfo/OS/Release

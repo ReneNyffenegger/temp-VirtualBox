@@ -6,4 +6,4 @@
 #   guest) needs to run in order of this command to work
 #
 
-VBoxManage guestcontrol $vmName run --exe ipconfig.exe --username $userName --password $password
+VBoxManage guestcontrol $vmNameClone run --exe ipconfig.exe --username $userName --password $password
