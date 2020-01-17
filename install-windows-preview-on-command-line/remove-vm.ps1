@@ -1,3 +1,3 @@
 VBoxManage controlvm $vmName poweroff
-VBoxManage unregistervm --delete $vmName
+VBoxManage unregistervm $vmName --delete
 rmdir -recurse $vmPath

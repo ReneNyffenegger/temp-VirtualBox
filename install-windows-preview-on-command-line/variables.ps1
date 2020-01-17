@@ -1,4 +1,4 @@
-# $env:path="C:\Program Files\Oracle\VirtualBox;$env:path"
+$env:path="C:\Program Files\Oracle\VirtualBox;$env:path"
 
 $vmName='Win10Preview'
 $vmPath="$home\VirtualBox VMs\$vmName"

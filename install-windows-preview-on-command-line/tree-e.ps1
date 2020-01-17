@@ -2,4 +2,4 @@
 #
 # tree is a .com, not a .exe
 
-VBoxManage guestcontrol $vmName run --username $userName --password $password --exe tree.com   -- DUMMY /f e:
+VBoxManage guestcontrol $vmNameClone run --username $userName --password $password --exe tree.com   -- DUMMY /f e:
