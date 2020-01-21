@@ -22,11 +22,11 @@
 
 . .\map-drive.ps1
 
-. .\show-mapped-drives.ps1
+#  . .\show-mapped-drives.ps1
 
-. .\oh-e.ps1
+# . .\oh-e.ps1
 
-. .\tree-e.ps1
+# . .\tree-e.ps1
 
 . .\run-batch-file.ps1
 
