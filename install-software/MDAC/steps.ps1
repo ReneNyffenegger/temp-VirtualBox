@@ -1,5 +1,5 @@
 #
-#  See https://renenyffenegger.ch/notes/Companies-Products/Oracle/VM-VirtualBox/command-line/PowerShell/setting-up-environment {
+#  See https://renenyffenegger.ch/notes/Companies-Products/Oracle/VM-VirtualBox/command-line/PowerShell/setting-up-environment
 #
 $vmNameClone='MDAC'
 $instDir="c:\users\$username\Software-to-be-installed"

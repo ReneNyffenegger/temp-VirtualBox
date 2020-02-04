@@ -8,15 +8,40 @@ Formats:
   - OVF
   - VMDK
 
-Host Key customizations
+
+Auto capture keyboard {
+
+  You have the *Auto capture keyboard* option turned on.
+  -> This will cause the Virtual Machine to automatically capture the keyboard
+     every time the VM window is activated and make it unavailable to other applications
+     runnint on your host machine: when the keyboard is captured, ally keystrokes (including
+     system ones like Alt-Tab) will be directed to the VM
+
+
+}
+Mouse pointer integration
+
+  The Virtual Machine reports that the guest OS does not support *mouse poitner integration* in the
+  current video mode.
+  You need to capture the mouse (by clicking over th VM display or pressing the host key) in order
+  to use the mouse inside the guest OS.
+
+}
+
+Configuring Automatic Mouse Capturing {
+
+  VBoxManage setextradata global|vm machine??? GUI/MouseCapturePolicy Default|HostComboOnly|Disabledj
+
+}
+
+Host Key customizations {
 
   VBoxManage setextradata global|vm machine???? GUI/Input/MachineShortcuts "FullscreenMode=F…"
 
   Setting an action to None will disable that Host key action
 
-Configuring Automatic Mouse Capturing
+}
 
-  VBoxManage setextradata global|vm machine??? GUI/MouseCapturePolicy Default|HostComboOnly|Disabledj
 
 Keyboard scan code, P 162
 
@@ -28,7 +53,8 @@ Teleporting
 
 
 
-Unattended Guest OS Install
+Unattended Guest OS Install {
+
 
    https://www.virtualbox.org/manual/ch03.html
 
@@ -37,6 +63,9 @@ Unattended Guest OS Install
    Windows Technical Preview
      https://insider.windows.com/en-us/welcome-insider/
 
+   https://renenyffenegger.ch/notes/Companies-Products/Oracle/VM-VirtualBox/command-line/PowerShell/unattended-os-installation
+
+}
 
 SDK / API
 
