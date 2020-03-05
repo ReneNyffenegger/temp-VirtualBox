@@ -19,4 +19,9 @@ VBoxManage guestcontrol $vmNameClone copyto   --username $userName --password $p
 VBoxManage guestcontrol $vmNameClone run C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe --username $userName --password $password -- -command set-executionPolicy remoteSigned -scope currentUser
 VBoxManage guestcontrol $vmNameClone run C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe --username $userName --password $password -- -command $instDir\find-ole-db-provider.ps1
 
-# }
+
+# ----
+#
+
+VBoxManage guestcontrol $vmNameClone run C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe --username $userName --password $password -- -command reg query hklm /s /f excel
+
